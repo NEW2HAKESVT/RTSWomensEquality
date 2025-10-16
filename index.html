@@ -88,17 +88,16 @@ p,li{line-height:1.6;}
 ul{padding-left:1.1rem;}
 .button{display:inline-block; background:var(--accent); color:#fff; padding:.8rem 1.4rem; border-radius:28px; text-decoration:none; font-weight:700;}
 
-/* ---------- Comment Box Fix ---------- */
-#HCB_comment_box{
-  position: relative !important;
-  z-index:9999 !important;
+/* ---------- Comment Box ---------- */
+.comment-container { position:relative; z-index:99999; }
+#HCB_comment_box {
   background:#fff7fb !important;
   border-radius:16px !important;
   box-shadow:0 6px 18px rgba(0,0,0,.06) !important;
   padding:1rem !important;
 }
-#HCB_comment_box textarea{ border-radius:10px !important; border:2px solid #ff80b5 !important; }
-#HCB_comment_box input[type=submit]{ background:#ff80b5 !important; color:#fff !important; border-radius:20px !important; border:none !important; padding:.45rem .9rem; }
+#HCB_comment_box textarea { border-radius:10px !important; border:2px solid #ff80b5 !important; }
+#HCB_comment_box input[type=submit] { background:#ff80b5 !important; color:#fff !important; border-radius:20px !important; border:none !important; padding:.45rem .9rem; }
 
 footer{margin-top:3rem;text-align:center;background:var(--accent);color:#fff;padding:1.25rem 1rem;border-radius:12px;margin-bottom:2rem;}
 
@@ -186,7 +185,11 @@ footer{margin-top:3rem;text-align:center;background:var(--accent);color:#fff;pad
   <section id="stories">
     <h2>Share Your Experience</h2>
     <p>Share your experiences with others — leave your name blank to stay anonymous!</p>
-    <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comments</a> are loading...</div>
+
+    <div class="comment-container">
+      <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comments</a> are loading...</div>
+    </div>
+
     <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
     <script type="text/javascript" id="hcb">
       if(!window.hcb_user){hcb_user={};}
@@ -279,8 +282,12 @@ function sprinkleBubbles(){
     }
   });
   document.querySelectorAll('section').forEach(sec=>{
-    const c=document.createElement('div'); c.style.position='absolute';
-    c.style.inset='0'; c.style.zIndex='0'; c.style.overflow='hidden'; c.style.pointerEvents='none';
+    const c=document.createElement('div');
+    c.style.position='absolute'; 
+    c.style.inset='0'; 
+    c.style.zIndex='0'; 
+    c.style.overflow='hidden'; 
+    c.style.pointerEvents='none';
     for(let i=0;i<4;i++) c.appendChild(makeBubble());
     sec.prepend(c);
   });
@@ -308,3 +315,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 </body>
 </html>
+
