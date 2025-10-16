@@ -46,18 +46,13 @@ body{
 }
 #enterBtn:hover{transform:scale(1.04); background:var(--accent-dark);}
 
-/* ---------- Bubbles ---------- */
-.bubble{
-  position:absolute; border-radius:50%; pointer-events:none; mix-blend-mode:screen; opacity:.9;
-}
-.heart, .star{
-  position:absolute; pointer-events:none; opacity:.7; mix-blend-mode:screen;
-}
-.heart{ background: rgba(255,100,150,0.5); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
-.star{ background: rgba(255,255,100,0.5);
+/* ---------- Bubbles/Hearts/Stars ---------- */
+.bubble, .heart, .star{position:absolute; pointer-events:none; opacity:.7; mix-blend-mode:screen;}
+.bubble{border-radius:50%;}
+.heart{background: rgba(255,100,150,0.5); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;}
+.star{background: rgba(255,255,100,0.5);
   clip-path: polygon(50% 0%, 61% 38%, 100% 38%, 69% 59%, 80% 100%, 50% 75%, 20% 100%, 31% 59%, 0% 38%, 39% 38%);
 }
-
 @keyframes floatY {0%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(.98)}100%{transform:translateY(0) scale(1)}}
 
 /* ---------- Header ---------- */
@@ -72,12 +67,8 @@ header {
 }
 @keyframes gradientShift {0% { background-position: 0% 50%; }50% { background-position: 100% 50%; }100% { background-position: 0% 50%; }}
 header .hero-inner{position:relative; z-index:3;}
-header h1 {
-  font-size:2.8rem; margin:0.1rem 0 .5rem;
-  text-shadow:0 6px 18px rgba(0,0,0,.12),0 0 8px rgba(255,255,255,.3);
-  animation: bounceText 4s ease-in-out infinite;
-}
-@keyframes bounceText { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+header h1 { font-size:2.8rem; margin:0.1rem 0 .5rem; text-shadow:0 6px 18px rgba(0,0,0,.12),0 0 8px rgba(255,255,255,.3); animation: bounceText 4s ease-in-out infinite;}
+@keyframes bounceText {0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 header p{max-width:780px;margin:0 auto 1rem;font-size:1.05rem;}
 header .meta-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:center;margin-top:1rem; z-index:3;}
 .kindness { background:rgba(255,255,255,0.15); padding:.45rem .9rem; border-radius:999px; font-weight:700; color:#fff; backdrop-filter: blur(3px);}
@@ -85,10 +76,7 @@ header .meta-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justi
 .quote-btn{ background:rgba(255,255,255,0.12); border:0; padding:.45rem .7rem; border-radius:999px; color:#fff; font-weight:700; cursor:pointer;}
 
 /* ---------- Navigation ---------- */
-nav{
-  background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.06);
-  position:sticky; top:0; z-index:50; padding:.85rem; text-align:center;
-}
+nav{background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.06); position:sticky; top:0; z-index:50; padding:.85rem; text-align:center;}
 nav a{ color:var(--accent-dark); text-decoration:none; margin:0 .6rem; font-weight:700; padding:.35rem .6rem; border-radius:20px; }
 nav a:hover{ background:var(--accent); color:#fff; }
 
@@ -100,9 +88,17 @@ p,li{line-height:1.6;}
 ul{padding-left:1.1rem;}
 .button{display:inline-block; background:var(--accent); color:#fff; padding:.8rem 1.4rem; border-radius:28px; text-decoration:none; font-weight:700;}
 
-#HCB_comment_box{background:#fff7fb !important;border-radius:16px !important;box-shadow:0 6px 18px rgba(0,0,0,.06) !important;padding:1rem !important;}
-#HCB_comment_box textarea{border-radius:10px !important;border:2px solid #ff80b5 !important;}
-#HCB_comment_box input[type=submit]{background:#ff80b5 !important;color:#fff !important;border-radius:20px !important;border:none !important;padding:.45rem .9rem;}
+/* ---------- Comment Box Fix ---------- */
+#HCB_comment_box{
+  position: relative !important;
+  z-index:9999 !important;
+  background:#fff7fb !important;
+  border-radius:16px !important;
+  box-shadow:0 6px 18px rgba(0,0,0,.06) !important;
+  padding:1rem !important;
+}
+#HCB_comment_box textarea{ border-radius:10px !important; border:2px solid #ff80b5 !important; }
+#HCB_comment_box input[type=submit]{ background:#ff80b5 !important; color:#fff !important; border-radius:20px !important; border:none !important; padding:.45rem .9rem; }
 
 footer{margin-top:3rem;text-align:center;background:var(--accent);color:#fff;padding:1.25rem 1rem;border-radius:12px;margin-bottom:2rem;}
 
@@ -175,7 +171,7 @@ footer{margin-top:3rem;text-align:center;background:var(--accent);color:#fff;pad
 
   <section id="stats">
     <h2>Key Statistics</h2>
-    <p>facts here</p>
+    <p>Add your facts here — for example: Women make up 47% of the workforce globally, but only 29% of senior leadership roles. Equal representation boosts company performance by up to 20%.</p>
   </section>
 
   <section id="resources">
@@ -190,10 +186,7 @@ footer{margin-top:3rem;text-align:center;background:var(--accent);color:#fff;pad
   <section id="stories">
     <h2>Share Your Experience</h2>
     <p>Share your experiences with others — leave your name blank to stay anonymous!</p>
-
-    <div id="HCB_comment_box">
-      <a href="http://www.htmlcommentbox.com">Comments</a> are loading...
-    </div>
+    <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comments</a> are loading...</div>
     <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
     <script type="text/javascript" id="hcb">
       if(!window.hcb_user){hcb_user={};}
@@ -215,8 +208,8 @@ footer{margin-top:3rem;text-align:center;background:var(--accent);color:#fff;pad
   <p>Richmond Upon Thames School, Citizenship Project</p>
 </footer>
 
-<!-- ---------- Scripts ---------- -->
 <script>
+// --------- Voices Counter ---------
 async function updateKindnessVoices() {
   const display = document.getElementById("kindnessDisplay");
   try {
@@ -238,6 +231,7 @@ async function updateKindnessVoices() {
   }
 }
 
+// --------- Quotes ---------
 const quotes=[
   "Empowered women empower the world.",
   "Equality is not a women's issue — it’s a business and human issue.",
@@ -253,9 +247,9 @@ function showRandomQuote(){
   document.getElementById('quoteBox').textContent=`“${q}”`;
 }
 
+// --------- Bubbles/Hearts/Stars ---------
 function makeBubble(){
-  const b=document.createElement('div');
-  b.className='bubble';
+  const b=document.createElement('div'); b.className='bubble';
   const size=20+Math.random()*120;
   b.style.width=b.style.height=size+'px';
   b.style.left=Math.random()*95+'%';
@@ -264,7 +258,6 @@ function makeBubble(){
   b.style.animation=`floatY ${8+Math.random()*10}s ease-in-out infinite`;
   return b;
 }
-
 function sprinkleBubbles(){
   document.querySelectorAll('header').forEach(sec=>{
     for(let i=0;i<10;i++){ sec.appendChild(makeBubble()); }
@@ -286,13 +279,14 @@ function sprinkleBubbles(){
     }
   });
   document.querySelectorAll('section').forEach(sec=>{
-    const c=document.createElement('div');
-    c.style.position='absolute'; c.style.inset='0'; c.style.zIndex='0'; c.style.overflow='hidden';
+    const c=document.createElement('div'); c.style.position='absolute';
+    c.style.inset='0'; c.style.zIndex='0'; c.style.overflow='hidden'; c.style.pointerEvents='none';
     for(let i=0;i<4;i++) c.appendChild(makeBubble());
     sec.prepend(c);
   });
 }
 
+// --------- Popup ----------
 function closePopup(){
   const popup=document.getElementById('popup');
   popup.classList.add('hidden');
@@ -311,5 +305,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   enter.addEventListener('keyup',e=>{if(e.key==='Enter') enter.click();});
 });
 </script>
+
 </body>
 </html>
